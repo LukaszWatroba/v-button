@@ -1,0 +1,63 @@
+.Button--pressable {
+  overflow: hidden;
+  position: relative;
+
+  transition: all 0.25s;
+
+  &.is-pressed {
+    transform: scale(0.95);
+  }
+}
+
+
+.Button--busy {
+  position: relative;
+
+  &.is-busy {
+    cursor: wait;
+
+    &::before {
+      content: '';
+      width: 0.75em;
+      height: 0.75em;
+      display: inline-block;
+
+      border: solid 2px transparent;
+      border-top-color: white;
+      border-left-color: white;
+      border-radius: 50%;
+      margin-right: 0.5em;
+
+      animation: Identicator-spin 0.75s linear infinite;
+    }
+  }
+}
+
+
+.Ripple {
+  position: absolute;
+  background: rgba(255,255,255, 0.25);
+  border-radius: 100%;
+  transform: scale(0.2);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -10;
+  animation: Ripple-enter .5s ease-out;
+}
+
+
+@keyframes Identicator-spin {
+  to {
+    transform: rotate( 360deg );
+  }
+}
+
+@keyframes Ripple-enter {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

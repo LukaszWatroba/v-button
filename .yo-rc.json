@@ -1,0 +1,29 @@
+{
+  "generator-angularjs-library": {
+    "props": {
+      "author": {
+        "name": "Łukasz Wątroba",
+        "email": "l@lukaszwatroba.com"
+      },
+      "libraryName": {
+        "original": "v-button",
+        "camelized": "vButton",
+        "dasherized": "v-button",
+        "slugified": "v-button",
+        "parts": [
+          "v",
+          "button"
+        ]
+      },
+      "includeModuleDirectives": true,
+      "includeModuleFilters": false,
+      "includeModuleServices": false,
+      "includeAngularModuleResource": false,
+      "includeAngularModuleCookies": false,
+      "includeAngularModuleSanitize": false,
+      "librarySrcDirectory": "src/vButton",
+      "libraryUnitTestDirectory": "test/unit/vButton",
+      "libraryUnitE2eDirectory": "test/e2e/vButton"
+    }
+  }
+}

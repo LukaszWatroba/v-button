@@ -1,0 +1,74 @@
+/**
+ * vButton - AngularJS pressable button with a busy indicator
+ * @version v0.0.1
+ * @link http://lukaszwatroba.github.io/v-button
+ * @author Łukasz Wątroba <l@lukaszwatroba.com>
+ * @license MIT License, http://www.opensource.org/licenses/MIT
+ */
+
+.Button--pressable {
+  overflow: hidden;
+  position: relative;
+  transition: all 0.25s; }
+  .Button--pressable.is-pressed {
+    -webkit-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+            transform: scale(0.95); }
+
+.Button--busy {
+  position: relative; }
+  .Button--busy.is-busy {
+    cursor: wait; }
+    .Button--busy.is-busy::before {
+      content: '';
+      width: 0.75em;
+      height: 0.75em;
+      display: inline-block;
+      border: solid 2px transparent;
+      border-top-color: white;
+      border-left-color: white;
+      border-radius: 50%;
+      margin-right: 0.5em;
+      -webkit-animation: Identicator-spin 0.75s linear infinite;
+              animation: Identicator-spin 0.75s linear infinite; }
+
+.Ripple {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 100%;
+  -webkit-transform: scale(0.2);
+      -ms-transform: scale(0.2);
+          transform: scale(0.2);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -10;
+  -webkit-animation: Ripple-enter 0.5s ease-out;
+          animation: Ripple-enter 0.5s ease-out; }
+
+@-webkit-keyframes Identicator-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes Identicator-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@-webkit-keyframes Ripple-enter {
+  0% {
+    opacity: 1; }
+
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    opacity: 0; } }
+
+@keyframes Ripple-enter {
+  0% {
+    opacity: 1; }
+
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    opacity: 0; } }
