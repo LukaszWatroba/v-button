@@ -1,6 +1,6 @@
 # AngularJS pressable button with a busy indicator
 
-Easy to use, AngularJS component inspired by Google material design allowing you to create buttons with a nice ripple effect and busy indicator.
+Easy to use, AngularJS directive inspired by Google material design allowing you to create buttons with a nice ripple effect and "busy" indicator.
 
 ## Demos
   - [GitHub](http://lukaszwatroba.github.io/v-button)
