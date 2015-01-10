@@ -1,7 +1,10 @@
 # AngularJS pressable button
 
+Easy to use, AngularJS component inspired by Google material design allowing you to create buttons with a nice ripple effect and busy / progress indicator.
+
 ## Demos
   - [GitHub](http://lukaszwatroba.github.io/v-button)
+  - [CodePen](http://codepen.io/LukaszWatroba/pen/YPNvpX)
 
 ## Installation
   - Use [bower](http://bower.io/) `bower install v-button`, or download files [from the github repo](./dist)
