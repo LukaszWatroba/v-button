@@ -32,11 +32,12 @@ angular.module('myApp', ['vButton'])
 
 ## Config
 You can easly change the default class names to suit your style.
-#### Example:
+
+##### Example:
 
 ```js
 angular
-  .module('myApp', [ 'vModal' ])
+  .module('myApp', [ 'vButton' ])
 
   .config(function (buttonConfig) {
     
