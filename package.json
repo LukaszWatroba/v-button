@@ -1,7 +1,7 @@
 {
   "name": "v-button",
   "description": "vButton - AngularJS pressable button with a busy indicator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Łukasz Wątroba <l@lukaszwatroba.com>",
   "license": "MIT",
   "keywords": [

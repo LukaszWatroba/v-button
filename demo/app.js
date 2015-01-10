@@ -4,8 +4,6 @@
   angular
     .module('myApp', [ 'vButton' ])
 
-    .controller('MainController', function ($scope) {
-      
-    });
+    .controller('MainController', function () { });
 
 })(angular);
