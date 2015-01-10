@@ -6,6 +6,12 @@
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
+/***************************************
+  Button
+ ***************************************/
+/* Button modifires
+ ***************************************/
+/* Modifier: pressable button */
 .Button--pressable {
   overflow: hidden;
   position: relative;
@@ -15,6 +21,7 @@
         -ms-transform: scale(0.95);
             transform: scale(0.95); }
 
+/* Modifier: busy button */
 .Button--busy {
   position: relative; }
   .Button--busy.is-busy {
@@ -32,6 +39,20 @@
       -webkit-animation: Identicator-spin 0.75s linear infinite;
               animation: Identicator-spin 0.75s linear infinite; }
 
+/* Animations
+ ***************************************/
+@-webkit-keyframes Identicator-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+@keyframes Identicator-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+/***************************************
+  Ripple
+ ***************************************/
 .Ripple {
   position: absolute;
   background: rgba(255, 255, 255, 0.25);
@@ -45,16 +66,8 @@
   -webkit-animation: Ripple-enter 0.5s ease-out;
           animation: Ripple-enter 0.5s ease-out; }
 
-@-webkit-keyframes Identicator-spin {
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
-@keyframes Identicator-spin {
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
+/* Animations
+ ***************************************/
 @-webkit-keyframes Ripple-enter {
   0% {
     opacity: 1; }
@@ -63,7 +76,6 @@
     -webkit-transform: scale(2);
             transform: scale(2);
     opacity: 0; } }
-
 @keyframes Ripple-enter {
   0% {
     opacity: 1; }

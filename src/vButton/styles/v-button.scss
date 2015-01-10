@@ -1,3 +1,13 @@
+/***************************************
+  Button
+ ***************************************/
+
+
+/* Button modifires
+ ***************************************/
+
+/* Modifier: pressable button */
+
 .Button--pressable {
   overflow: hidden;
   position: relative;
@@ -9,6 +19,8 @@
   }
 }
 
+
+/* Modifier: busy button */
 
 .Button--busy {
   position: relative;
@@ -34,6 +46,23 @@
 }
 
 
+/* Animations
+ ***************************************/
+ 
+@keyframes Identicator-spin {
+  to {
+    transform: rotate( 360deg );
+  }
+}
+
+
+
+
+/***************************************
+  Ripple
+ ***************************************/
+ 
+
 .Ripple {
   position: absolute;
   background: rgba(255,255,255, 0.25);
@@ -46,12 +75,9 @@
 }
 
 
-@keyframes Identicator-spin {
-  to {
-    transform: rotate( 360deg );
-  }
-}
-
+/* Animations
+ ***************************************/
+ 
 @keyframes Ripple-enter {
   0% {
     opacity: 1;
