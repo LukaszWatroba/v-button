@@ -58,7 +58,7 @@ describe('v-button directive', function () {
   });
 
 
-  it('should add a ripple and `is-pressed` class on `mousedown` event', function () {
+  it('should add a ripple and `is-pressed` class on `touchstart` event', function () {
     var ripleClass = buttonConfig.classes.ripple;
     var pressedClass = buttonConfig.classes.isPressedState;
 
@@ -68,7 +68,7 @@ describe('v-button directive', function () {
 
     expect(riple[0]).not.toBeDefined();
 
-    button.mousedown();
+    button.trigger('touchstart');
     riple = button.find( 'span.' + ripleClass );
     
     expect(riple[0]).toBeDefined();
@@ -76,15 +76,15 @@ describe('v-button directive', function () {
   });
 
 
-  it('should remove `is-pressed` class on `mouseup` event', inject(function ($document) {
+  it('should remove `is-pressed` class on `touchend` event', inject(function ($document) {
     var template = generateTemplate();
     var button = $compile(template)(scope);
     var pressedClass = buttonConfig.classes.isPressedState;
     var body = $($document[0].body);
 
-    button.mousedown();
+    button.trigger('touchstart');
     expect(button.hasClass( pressedClass )).toBe(true);
-    body.mouseup();
+    body.trigger('touchend');
     expect(button.hasClass( pressedClass )).toBe(false);
   }));
 

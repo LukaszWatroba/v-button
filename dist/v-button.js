@@ -1,6 +1,6 @@
 /**
  * vButton - AngularJS pressable button with a busy indicator
- * @version v0.0.2
+ * @version v0.0.3
  * @link http://lukaszwatroba.github.io/v-button
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -72,6 +72,11 @@ function vButtonDirective ($document, buttonConfig) {
       tElement.addClass(buttonConfig.classes.buttonPressableModifier);
 
       return function postLink (scope, iElement, iAttrs) {
+        var isTouch = !!('undefined' !== typeof $document[0].documentElement.ontouchstart);
+
+        var pressEvent = (isTouch) ? 'touchstart' : 'mousedown',
+            releaseEvent = (isTouch) ? 'touchend' : 'mouseup';
+
         var idleLabelHtml = buttonLabelElement.html(),
             busyLabelHtml = scope.busyLabel || buttonConfig.busyLabel;
 
@@ -95,16 +100,19 @@ function vButtonDirective ($document, buttonConfig) {
           ripple.style.top = top + 'px';
         }
 
-        iElement.bind('mousedown touchstart', function (event) {
+        function pressButton (event) {
           makeRipple(event.pageX, event.pageY);
-
           iElement.addClass(buttonConfig.classes.isPressedState);
 
-          bodyElement.bind('mouseup touchend', function (event) {
-            iElement.removeClass(buttonConfig.classes.isPressedState);
-            bodyElement.unbind('mouseup touchend');
-          });
-        });
+          bodyElement.bind(releaseEvent, releaseButton);
+        }
+
+        function releaseButton (event) {
+          iElement.removeClass(buttonConfig.classes.isPressedState);
+          bodyElement.unbind(releaseEvent, releaseButton);
+        }
+
+        iElement.bind(pressEvent, pressButton);
 
         scope.$watch('isBusy', function (value) {
           if (value) {
