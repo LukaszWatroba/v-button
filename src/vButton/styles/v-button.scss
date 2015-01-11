@@ -1,6 +1,22 @@
 /***************************************
   Button
  ***************************************/
+ 
+
+ /**
+ * Example HTML:
+ *
+  <button class="Button" v-button busy="isBusy" busy-label="Please wait">Submit</button>
+ */
+
+ /**
+ * Resoult HTML: when isBusy === true, and button is pressed
+ *
+  <button class="Button Button--pressable Button--busy is-busy is-pressed" v-button busy="isBusy" busy-label="Please wait">
+    <span class="Button-label">Please wait</span>
+    <span class="Ripple"></span>
+  </button>
+ */
 
 
 /* Button modifires
