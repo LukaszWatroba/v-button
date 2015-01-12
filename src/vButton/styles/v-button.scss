@@ -1,83 +1,12 @@
 /***************************************
-  Button
- ***************************************/
- 
-
- /**
- * Example HTML:
- *
-  <button class="Button" v-button busy="isBusy" busy-label="Please wait">Submit</button>
- */
-
- /**
- * Resoult HTML: when isBusy === true, and button is pressed
- *
-  <button class="Button Button--pressable Button--busy is-busy is-pressed" v-button busy="isBusy" busy-label="Please wait">
-    <span class="Button-label">Please wait</span>
-    <span class="Ripple"></span>
-  </button>
- */
-
-
-/* Button modifires
- ***************************************/
-
-/* Modifier: pressable button */
-
-.Button--pressable {
-  overflow: hidden;
-  position: relative;
-
-  transition: all 0.25s;
-
-  &.is-pressed {
-    transform: scale(0.95);
-  }
-}
-
-
-/* Modifier: busy button */
-
-.Button--busy {
-  position: relative;
-
-  &.is-busy {
-    cursor: wait;
-
-    &::before {
-      content: '';
-      width: 0.75em;
-      height: 0.75em;
-      display: inline-block;
-
-      border: solid 2px transparent;
-      border-top-color: white;
-      border-left-color: white;
-      border-radius: 50%;
-      margin-right: 0.5em;
-
-      animation: Identicator-spin 0.75s linear infinite;
-    }
-  }
-}
-
-
-/* Animations
- ***************************************/
- 
-@keyframes Identicator-spin {
-  to {
-    transform: rotate( 360deg );
-  }
-}
-
-
-
-
-/***************************************
   Ripple
  ***************************************/
  
+
+/* Settings */
+$ripple-color: rgba(255,255,255, 0.25) !default;
+$ripple-effect-duration: 0.5s !default;
+
 
 .Ripple {
   position: absolute;
@@ -87,7 +16,7 @@
   opacity: 0;
   pointer-events: none;
   z-index: 0;
-  animation: Ripple-enter .5s ease-out;
+  animation: Ripple-enter $ripple-effect-duration ease-out;
 }
 
 
@@ -103,3 +32,90 @@
     opacity: 0;
   }
 }
+
+
+
+/***************************************
+  BusyIdenticator
+ ***************************************/
+ 
+
+/* Settings */
+$busy-identicator-color: white !default;
+$busy-identicator-spin-duration: 0.75s !default;
+
+
+%BusyIdenticator {
+  content: '';
+  width: 0.75em;
+  height: 0.75em;
+  display: inline-block;
+
+  border: solid 2px transparent;
+  border-top-color: $busy-identicator-color;
+  border-left-color: $busy-identicator-color;
+  border-radius: 50%;
+  margin-right: 0.5em;
+
+  animation: ProgressIdenticator-spin $busy-identicator-spin-duration linear infinite;
+}
+
+
+/* Animations
+ ***************************************/
+ 
+@keyframes ProgressIdenticator-spin {
+  to {
+    transform: rotate( 360deg );
+  }
+}
+
+
+
+/***************************************
+  Button
+ ***************************************/
+ 
+
+/* Settings */
+$button-pressed-scale: scale(0.95) !default;
+$button-transition: all 0.25s !default;
+
+
+/**
+ * Example HTML:
+ *
+  <button class="Button" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
+    <span>Submit</span>
+  </button>
+ */
+
+ /**
+ * Resoult HTML: if isBusy === true, and button is pressed
+ *
+  <button class="Button is-busy is-pressed" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
+    <span>Please wait</span>
+    <span class="Ripple"></span>
+  </button>
+ */
+
+
+.Button {
+  overflow: hidden;
+  position: relative;
+
+  transition: $button-transition;
+
+  &.is-pressed {
+    transform: $button-pressed-scale;
+  }
+
+  &.is-busy {
+    cursor: wait;
+
+    &::before {
+      @extend %BusyIdenticator;
+    }
+  }
+}
+

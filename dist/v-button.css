@@ -1,71 +1,15 @@
 /**
  * vButton - AngularJS pressable button with a busy indicator
- * @version v0.0.3
+ * @version v0.1.0
  * @link http://lukaszwatroba.github.io/v-button
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
 /***************************************
-  Button
- ***************************************/
-/**
- * Example HTML:
- *
-  <button class="Button" v-button busy="isBusy" busy-label="Please wait">Submit</button>
- */
-/**
- * Resoult HTML: when isBusy === true, and button is pressed
- *
-  <button class="Button Button--pressable Button--busy is-busy is-pressed" v-button busy="isBusy" busy-label="Please wait">
-    <span class="Button-label">Please wait</span>
-    <span class="Ripple"></span>
-  </button>
- */
-/* Button modifires
- ***************************************/
-/* Modifier: pressable button */
-.Button--pressable {
-  overflow: hidden;
-  position: relative;
-  transition: all 0.25s; }
-  .Button--pressable.is-pressed {
-    -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-            transform: scale(0.95); }
-
-/* Modifier: busy button */
-.Button--busy {
-  position: relative; }
-  .Button--busy.is-busy {
-    cursor: wait; }
-    .Button--busy.is-busy::before {
-      content: '';
-      width: 0.75em;
-      height: 0.75em;
-      display: inline-block;
-      border: solid 2px transparent;
-      border-top-color: white;
-      border-left-color: white;
-      border-radius: 50%;
-      margin-right: 0.5em;
-      -webkit-animation: Identicator-spin 0.75s linear infinite;
-              animation: Identicator-spin 0.75s linear infinite; }
-
-/* Animations
- ***************************************/
-@-webkit-keyframes Identicator-spin {
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-@keyframes Identicator-spin {
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
-/***************************************
   Ripple
  ***************************************/
+/* Settings */
 .Ripple {
   position: absolute;
   background: rgba(255, 255, 255, 0.25);
@@ -97,3 +41,61 @@
     -webkit-transform: scale(2);
             transform: scale(2);
     opacity: 0; } }
+
+/***************************************
+  BusyIdenticator
+ ***************************************/
+/* Settings */
+.Button.is-busy::before {
+  content: '';
+  width: 0.75em;
+  height: 0.75em;
+  display: inline-block;
+  border: solid 2px transparent;
+  border-top-color: white;
+  border-left-color: white;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  -webkit-animation: ProgressIdenticator-spin 0.75s linear infinite;
+          animation: ProgressIdenticator-spin 0.75s linear infinite; }
+
+/* Animations
+ ***************************************/
+@-webkit-keyframes ProgressIdenticator-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+@keyframes ProgressIdenticator-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+/***************************************
+  Button
+ ***************************************/
+/* Settings */
+/**
+ * Example HTML:
+ *
+  <button class="Button" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
+    <span>Submit</span>
+  </button>
+ */
+/**
+ * Resoult HTML: if isBusy === true, and button is pressed
+ *
+  <button class="Button is-busy is-pressed" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
+    <span>Please wait</span>
+    <span class="Ripple"></span>
+  </button>
+ */
+.Button {
+  overflow: hidden;
+  position: relative;
+  transition: all 0.25s; }
+  .Button.is-pressed {
+    -webkit-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+            transform: scale(0.95); }
+  .Button.is-busy {
+    cursor: wait; }

@@ -6,11 +6,6 @@ angular.module('vButton.config', [])
     busyLabel: 'Loading',
 
     classes: {
-      buttonPressableModifier: 'Button--pressable',
-      buttonBusyModifier: 'Button--busy',
-
-      buttonLabel: 'Button-label',
-
       ripple: 'Ripple',
 
       isBusyState: 'is-busy',

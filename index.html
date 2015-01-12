@@ -45,19 +45,19 @@
       <div class="u-textCenter u-marginBl">
         <ul class="ButtonGroup ButtonGroup--hz">
           <li class="ButtonGroup-item u-marginAs">
-            <button class="Button Button--default Button--lg" v-button>Pressable Button</button>
+            <button class="Button Button--default Button--lg" v-pressable>Pressable Button</button>
           </li>
           <li class="ButtonGroup-item u-marginAs">
-            <button class="Button Button--default Button--lg" v-button busy="isBusy" ng-click="isBusy = !isBusy">Busy Button</button>
+            <button class="Button Button--default Button--lg" ng-click="isBusy = !isBusy" v-busy="isBusy" v-pressable>Busy Button</button>
           </li>
         </ul>
 
         <ul class="ButtonGroup ButtonGroup--hz">
           <li class="ButtonGroup-item u-marginAs">
-            <button class="Button Button--default" v-button>Pressable Button</button>
+            <button class="Button Button--default" v-pressable>Pressable Button</button>
           </li>
           <li class="ButtonGroup-item u-marginAs">
-            <button class="Button Button--default" v-button busy="isLoading" busy-label="Please wait" ng-click="isLoading = !isLoading">Busy Button</button>
+            <button class="Button Button--default" ng-click="isLoading = !isLoading" v-busy="isLoading" v-busy-label="Please wait" v-pressable>Busy Button</button>
           </li>
         </ul>
       </div>

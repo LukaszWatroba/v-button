@@ -2,14 +2,19 @@
 
 AngularJS directive inspired by Google material design allowing you to create buttons with a nice ripple effect and "busy" indicator.
 
+
 ## Demos
+
   - [GitHub](http://lukaszwatroba.github.io/v-button)
   - [CodePen](http://codepen.io/LukaszWatroba/pen/YPNvpX)
 
+
 ## Installation
+
   - Use [bower](http://bower.io/) `bower install v-button`, or download files [from the github repo](./dist)
   - Reference `v-button.css` and `v-button.js` in your index.html file
   - Reference the module in your app: `angular.module('myApp', [ 'vButton' ])`
+
 
 ## Usage
 
@@ -30,19 +35,24 @@ angular.module('myApp', ['vButton'])
 > index.html
 
 ```html
-<button class="Button Button--default" v-button busy="isBusy" ng-click="buttonClick()">Busy Button</button>
+<button class="Button" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>Busy Button</button>
 ```
 
+
 ##### Resoult html
+
 ```html
-<button class="Button Button--default Button--pressable Button--busy" v-button busy="isBusy" ng-click="buttonClick()">
-  <span class="Button-label">Busy Button</span>
+<button class="Button is-busy is-pressed" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
+  <span>Please wait</span>
+  <span class="Ripple"></span>
 </button>
 ```
 
 
 ## Config
+
 You can easly change the default class names to suit your style.
+
 
 ##### Example
 
@@ -56,11 +66,6 @@ angular
       busyLabel: 'Please wait',                     // Default: Loading
 
       classes: {
-        buttonPressableModifier: 'btn-pressable',   // Default: Button--pressable
-        buttonBusyModifier: 'btn--busy',            // Default: Button--busy
-
-        buttonLabel: 'btn-label',                   // Default: Button-label
-
         ripple: 'ripple',                           // Default: Ripple
 
         isBusyState: 'busy',                        // Default: is-busy
