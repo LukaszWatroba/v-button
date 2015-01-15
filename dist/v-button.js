@@ -1,6 +1,6 @@
 /**
  * vButton - AngularJS pressable button with a busy indicator
- * @version v0.1.0
+ * @version v0.2.1
  * @link http://lukaszwatroba.github.io/v-button
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
