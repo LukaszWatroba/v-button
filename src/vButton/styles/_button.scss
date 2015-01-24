@@ -1,0 +1,24 @@
+/***************************************
+  Button
+ ***************************************/
+ 
+
+.Button {
+  overflow: hidden;
+  position: relative;
+
+  transition: $button-transition;
+
+  &.is-pressed {
+    transform: $button-pressed-scale;
+  }
+
+  &.is-busy {
+    cursor: wait;
+
+    &::before {
+      @extend %BusyIdenticator;
+    }
+  }
+}
+
