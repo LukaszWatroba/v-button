@@ -26,10 +26,10 @@ function vBusyDirective ($document, buttonConfig) {
 
         scope.$watch('isBusy', function (value) {
           if (value) {
-            iElement.addClass(buttonConfig.classes.isBusyState);
+            iElement.addClass(buttonConfig.states.busy);
             labelElement.html(busyLabelHtml);
           } else {
-            iElement.removeClass(buttonConfig.classes.isBusyState);
+            iElement.removeClass(buttonConfig.states.busy);
             labelElement.html(idleLabelHtml);
           }
         });

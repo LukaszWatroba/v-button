@@ -1,6 +1,6 @@
 /**
  * vButton - AngularJS pressable button with a busy indicator
- * @version v0.2.2
+ * @version v1.0.0
  * @link http://lukaszwatroba.github.io/v-button
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -16,11 +16,9 @@ angular.module('vButton.config', [])
   .constant('buttonConfig', {
     busyLabel: 'Loading',
 
-    classes: {
-      ripple: 'Ripple',
-
-      isBusyState: 'is-busy',
-      isPressedState: 'is-pressed'
+    states: {
+      busy: 'is-busy',
+      pressed: 'is-pressed'
     }
   });
 
@@ -62,10 +60,10 @@ function vBusyDirective ($document, buttonConfig) {
 
         scope.$watch('isBusy', function (value) {
           if (value) {
-            iElement.addClass(buttonConfig.classes.isBusyState);
+            iElement.addClass(buttonConfig.states.busy);
             labelElement.html(busyLabelHtml);
           } else {
-            iElement.removeClass(buttonConfig.classes.isBusyState);
+            iElement.removeClass(buttonConfig.states.busy);
             labelElement.html(idleLabelHtml);
           }
         });
@@ -95,14 +93,13 @@ function vPressableDirective ($document, buttonConfig) {
 
       function makeRipple (posX, posY) {
         var rect = iElement[0].getBoundingClientRect(),
-            ripple = iElement[0].querySelector('.' + buttonConfig.classes.ripple);
+            ripple = iElement[0].querySelector('v-ripple');
 
         var top, left;
 
         angular.element(ripple).remove();
 
-        ripple = $document[0].createElement('span');
-        ripple.className = buttonConfig.classes.ripple;
+        ripple = $document[0].createElement('v-ripple');
         ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
 
         iElement.append(ripple);
@@ -115,13 +112,13 @@ function vPressableDirective ($document, buttonConfig) {
 
       function pressButton (event) {
         makeRipple(event.pageX, event.pageY);
-        iElement.addClass(buttonConfig.classes.isPressedState);
+        iElement.addClass(buttonConfig.states.pressed);
 
         bodyElement.bind(releaseEvent, releaseButton);
       }
 
       function releaseButton (event) {
-        iElement.removeClass(buttonConfig.classes.isPressedState);
+        iElement.removeClass(buttonConfig.states.pressed);
         bodyElement.unbind(releaseEvent, releaseButton);
       }
 

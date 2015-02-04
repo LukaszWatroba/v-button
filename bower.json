@@ -4,6 +4,9 @@
   "keywords": [
     "AngularJS",
     "button",
+    "ripple",
+    "busy",
+    "progress",
     "component",
     "directive",
     "module"

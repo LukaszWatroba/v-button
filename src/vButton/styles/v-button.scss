@@ -16,13 +16,13 @@
  *
   <button class="Button is-busy is-pressed" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
     <span>Please wait</span>
-    <span class="Ripple"></span>
+    <v-ripple></v-ripple>
   </button>
  */
  
 
 @import 'settings';
-@import 'busy-identicator';
-@import 'button';
-@import 'ripple';
+@import 'v-busy';
+@import 'v-pressable';
+@import 'v-ripple';
 

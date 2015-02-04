@@ -1,0 +1,16 @@
+/***************************************
+  vPressable
+ ***************************************/
+ 
+
+[v-pressable] {
+  overflow: hidden;
+  position: relative;
+
+  transition: $v-pressable-transition;
+
+  &.is-pressed {
+    transform: $v-pressable-pressed-scale;
+  }
+}
+

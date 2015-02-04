@@ -43,34 +43,7 @@ Resoult html: (if button is pressed and the `isBusy` value is equal `true`)
 ```html
 <button class="Button is-busy is-pressed" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
   <span>Please wait</span>
-  <span class="Ripple"></span>
+  <v-ripple></v-ripple>
 </button>
 ```
 
-
-## Config
-
-You can easly change the default class names to suit your style.
-
-
-##### Example
-
-```js
-angular
-  .module('myApp', [ 'vButton' ])
-
-  .config(function (buttonConfig) {
-    
-    buttonConfig = {
-      busyLabel: 'Please wait',                     // Default: Loading
-
-      classes: {
-        ripple: 'ripple',                           // Default: Ripple
-
-        isBusyState: 'busy',                        // Default: is-busy
-        isPressedState: 'pressed'                   // Default: is-pressed
-      }
-    }
-
-  });
-```

@@ -1,23 +1,22 @@
 /***************************************
-  Ripple
+  vRipple
  ***************************************/
 
 
-.Ripple {
+v-ripple {
   position: absolute;
-  background: rgba(255,255,255, 0.25);
+  display: inline-block;
+  background: $v-ripple-color;
   border-radius: 100%;
   transform: scale(0.2);
   opacity: 0;
   pointer-events: none;
   z-index: 0;
-  animation: Ripple-enter $ripple-effect-duration ease-out;
+  animation: v-ripple-enter $v-ripple-effect-duration ease-out;
 }
 
-
-/* Ripple animations */
  
-@keyframes Ripple-enter {
+@keyframes v-ripple-enter {
   0% {
     opacity: 1;
   }

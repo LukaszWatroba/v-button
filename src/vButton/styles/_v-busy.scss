@@ -1,0 +1,33 @@
+/***************************************
+  vBusy
+ ***************************************/
+ 
+
+[v-busy] {
+  &.is-busy {
+    cursor: wait;
+
+    &::before {
+      content: '';
+      width: 0.75em;
+      height: 0.75em;
+      display: inline-block;
+
+      border: solid 2px transparent;
+      border-top-color: $v-busy-identicator-color;
+      border-left-color: $v-busy-identicator-color;
+      border-radius: 50%;
+      margin-right: 0.5em;
+
+      animation: v-busy-spin $v-busy-identicator-spin-duration linear infinite;
+    }
+  }
+}
+
+ 
+@keyframes v-busy-spin {
+  to {
+    transform: rotate( 360deg );
+  }
+}
+

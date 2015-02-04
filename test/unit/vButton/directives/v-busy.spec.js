@@ -53,17 +53,16 @@ describe('v-busy directive', function () {
   it('should add `is-busy` class only if `isBusy` is equal `true`', function () {
     var template = generateTemplate();
     var button = $compile(template)(scope);
-    var busyClass = buttonConfig.classes.isBusyState;
 
     scope.isBusy = true;
     scope.$digest();
 
-    expect(button.hasClass( busyClass )).toBe(true);
+    expect(button.hasClass('is-busy')).toBe(true);
 
     scope.isBusy = false;
     scope.$digest();
 
-    expect(button.hasClass( busyClass )).toBe(false);
+    expect(button.hasClass('is-busy')).toBe(false);
   });
 
 
@@ -72,7 +71,6 @@ describe('v-busy directive', function () {
 
     var template = generateTemplate({ busyLabel: busyLabel });
     var button = $compile(template)(scope);
-    var busyClass = buttonConfig.classes.isBusyState;
 
     scope.isBusy = true;
     scope.$digest();

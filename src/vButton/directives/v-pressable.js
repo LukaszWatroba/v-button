@@ -17,14 +17,13 @@ function vPressableDirective ($document, buttonConfig) {
 
       function makeRipple (posX, posY) {
         var rect = iElement[0].getBoundingClientRect(),
-            ripple = iElement[0].querySelector('.' + buttonConfig.classes.ripple);
+            ripple = iElement[0].querySelector('v-ripple');
 
         var top, left;
 
         angular.element(ripple).remove();
 
-        ripple = $document[0].createElement('span');
-        ripple.className = buttonConfig.classes.ripple;
+        ripple = $document[0].createElement('v-ripple');
         ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
 
         iElement.append(ripple);
@@ -37,13 +36,13 @@ function vPressableDirective ($document, buttonConfig) {
 
       function pressButton (event) {
         makeRipple(event.pageX, event.pageY);
-        iElement.addClass(buttonConfig.classes.isPressedState);
+        iElement.addClass(buttonConfig.states.pressed);
 
         bodyElement.bind(releaseEvent, releaseButton);
       }
 
       function releaseButton (event) {
-        iElement.removeClass(buttonConfig.classes.isPressedState);
+        iElement.removeClass(buttonConfig.states.pressed);
         bodyElement.unbind(releaseEvent, releaseButton);
       }
 

@@ -6,20 +6,20 @@
 // Button
 // -------------------------------------
 
-$button-pressed-scale: scale(0.95)      !default;
-$button-transition: all 0.25s           !default;
+$v-pressable-pressed-scale: scale(0.95)   !default;
+$v-pressable-transition:    all 0.25s     !default;
 
 
 // Ripple
 // -------------------------------------
 
-$ripple-color: rgba(255,255,255, 0.25)  !default;
-$ripple-effect-duration: 0.5s           !default;
+$v-ripple-color:            rgba(255,255,255, 0.25)  !default;
+$v-ripple-effect-duration:  0.5s                     !default;
 
 
 // Busy identicator
 // -------------------------------------
 
-$busy-identicator-color: white          !default;
-$busy-identicator-spin-duration: 0.75s  !default;
+$v-busy-identicator-color:          white  !default;
+$v-busy-identicator-spin-duration:  0.75s  !default;
 
