@@ -17,7 +17,7 @@
   </button>
  */
 /**
- * Resoult HTML: if isBusy === true, and button is pressed
+ * Result HTML: if isBusy === true, and button is pressed
  *
   <button class="Button is-busy is-pressed" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
     <span>Please wait</span>
