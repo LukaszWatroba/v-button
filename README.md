@@ -38,7 +38,7 @@ angular.module('myApp', ['vButton'])
 <button class="Button" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>Busy Button</button>
 ```
 
-Resoult html: (if button is pressed and the `isBusy` value is equal `true`)
+Result html: (if button is pressed and the `isBusy` value is equal `true`)
 
 ```html
 <button class="Button is-busy is-pressed" ng-click="isBusy = !isBusy" v-busy="isBusy" v-busy-label="Please wait" v-pressable>
