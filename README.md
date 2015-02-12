@@ -1,6 +1,6 @@
 # AngularJS pressable button with a busy indicator
 
-AngularJS directives allowing you to create buttons with a nice ripple effect and "busy" indicator. Inspired by [Google material design](http://www.google.com/design/spec/material-design/introduction.html).
+AngularJS directives allow you to create buttons with a nice ripple effect and "busy" indicator. Inspired by [Google material design](http://www.google.com/design/spec/material-design/introduction.html).
 
 
 ## Demos
