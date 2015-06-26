@@ -47,3 +47,9 @@ Result html: (if button is pressed and the `isBusy` value is equal `true`)
 </button>
 ```
 
+When working with attribute having dynamic values (here we have an example with angular-translate), you may do it like this:
+
+```html
+<button class="Button" ng-click="isBusy = !isBusy" v-busy="auth.isBusy" v-busy-label="{{'translation_key' | translate}}" v-busy-text="{{'translation_key' | translate}}"  v-pressable><span translate>translation_key</span></button>
+``
+
