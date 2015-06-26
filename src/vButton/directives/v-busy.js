@@ -36,18 +36,15 @@ function vBusyDirective ($document, buttonConfig) {
           }
         });
 
-        tAttrs.$observe('vBusyLabel', function(value)
-        {
-            busyLabelHtml = value;
+        tAttrs.$observe('vBusyLabel', function(value) {
+          busyLabelHtml = value;
         });
 
-        tAttrs.$observe('vBusyText', function(value)
-        {
-            busyTextHtml = value;
+        tAttrs.$observe('vBusyText', function(value) {
+          busyTextHtml = value;
         });
       };
     }
   };
 }
 vBusyDirective.$inject = ['$document', 'buttonConfig'];
-

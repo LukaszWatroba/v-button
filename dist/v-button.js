@@ -1,6 +1,6 @@
 /**
  * vButton - AngularJS pressable button with a busy indicator
- * @version v1.0.0
+ * @version v1.1.0
  * @link http://lukaszwatroba.github.io/v-button
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -44,9 +44,10 @@ function vBusyDirective ($document, buttonConfig) {
     restrict: 'A',
     scope: {
       isBusy: '=vBusy',
-      busyLabel: '@vBusyLabel'
+      busyLabel: '@vBusyLabel',
+      busyText: '@vBusyText'
     },
-    compile: function (tElement) {
+    compile: function (tElement, tAttrs) {
       var labelElement = angular.element(tElement.find('span'));
 
       if (!labelElement[0]) {
@@ -56,7 +57,8 @@ function vBusyDirective ($document, buttonConfig) {
 
       return function postLink (scope, iElement) {
         var idleLabelHtml = labelElement.html(),
-            busyLabelHtml = scope.busyLabel || buttonConfig.busyLabel;
+            busyLabelHtml = scope.busyLabel || buttonConfig.busyLabel,
+            busyTextHtml = scope.busyText;
 
         scope.$watch('isBusy', function (value) {
           if (value) {
@@ -64,15 +66,22 @@ function vBusyDirective ($document, buttonConfig) {
             labelElement.html(busyLabelHtml);
           } else {
             iElement.removeClass(buttonConfig.states.busy);
-            labelElement.html(idleLabelHtml);
+            labelElement.html(busyTextHtml || idleLabelHtml);
           }
+        });
+
+        tAttrs.$observe('vBusyLabel', function(value) {
+          busyLabelHtml = value;
+        });
+
+        tAttrs.$observe('vBusyText', function(value) {
+          busyTextHtml = value;
         });
       };
     }
   };
 }
 vBusyDirective.$inject = ['$document', 'buttonConfig'];
-
 
 
 
