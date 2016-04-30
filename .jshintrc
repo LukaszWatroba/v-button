@@ -23,7 +23,8 @@
   "jasmine": true,
 
   "globals": {
-    "angular": false
+    "angular": false,
+    "window": false
   },
 
   "predef": [
