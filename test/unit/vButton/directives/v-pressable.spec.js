@@ -34,29 +34,19 @@ describe('v-pressable directive', function () {
   
 
 
-  it('should add a ripple element and `is-pressed` class on `touchstart` event', function () {
-    var template = generateTemplate();
-    var button = $compile(template)(scope);
-    var ripple = button.find('v-ripple');
-
-    expect(ripple[0]).not.toBeDefined();
-
-    button.trigger('touchstart');
-    ripple = button.find('v-ripple');
-    
-    expect(ripple[0]).toBeDefined();
-    expect(button.hasClass('is-pressed')).toBe(true);
-  });
-
-
-  it('should remove `is-pressed` class on `touchend` event', inject(function ($document) {
+  it('should add and remove `is-pressed` and the ripple element', inject(function ($document) {
     var template = generateTemplate();
     var button = $compile(template)(scope);
     var body = $($document[0].body);
+    var ripple;
 
-    button.trigger('touchstart');
+    button.trigger('mousedown');
     expect(button.hasClass('is-pressed')).toBe(true);
-    body.trigger('touchend');
+    
+    body.trigger('mouseup');
+    ripple = button.find('v-ripple');
+    
+    expect(ripple[0]).toBeDefined();
     expect(button.hasClass('is-pressed')).toBe(false);
   }));
 

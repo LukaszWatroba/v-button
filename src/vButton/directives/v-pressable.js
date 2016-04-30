@@ -1,4 +1,7 @@
 
+function isTouchDevice () {
+ return (('ontouchstart' in window) || (window.navigator.MaxTouchPoints > 0) || (window.navigator.msMaxTouchPoints > 0));
+}
 
 // vPressable directive
 angular.module('vButton.directives')
@@ -9,8 +12,8 @@ function vPressableDirective ($document, buttonConfig) {
   return {
     restrict: 'A',
     link: function (scope, iElement) {
-      var isTouch = !!('undefined' !== typeof $document[0].documentElement.ontouchstart);
-      var pressEvent = (isTouch) ? 'touchstart' : 'mousedown',
+      var isTouch = isTouchDevice(),
+          pressEvent = (isTouch) ? 'touchstart' : 'mousedown',
           releaseEvent = (isTouch) ? 'touchend' : 'mouseup';
 
       var bodyElement = angular.element($document[0].body);
@@ -34,19 +37,34 @@ function vPressableDirective ($document, buttonConfig) {
         ripple.style.top = top + 'px';
       }
 
-      function pressButton (event) {
-        makeRipple(event.pageX, event.pageY);
+      function pressButton () {
         iElement.addClass(buttonConfig.states.pressed);
-
-        bodyElement.bind(releaseEvent, releaseButton);
+        bodyElement.on(releaseEvent, releaseButton);
       }
 
       function releaseButton (event) {
+        var posX, posY;
+        
+        if (isTouch) {
+          posX = event.changedTouches[0].pageX;
+          posY = event.changedTouches[0].pageY;
+        } else {
+          posX = event.pageX;
+          posY = event.pageY;
+        }
+        
+        makeRipple(posX, posY);
+        
         iElement.removeClass(buttonConfig.states.pressed);
-        bodyElement.unbind(releaseEvent, releaseButton);
+        bodyElement.off(releaseEvent, releaseButton);
       }
 
-      iElement.bind(pressEvent, pressButton);
+      iElement.on(pressEvent, pressButton);
+      
+      scope.$on('$destroy', function () {
+        iElement.off(pressEvent, pressButton);
+        bodyElement.off(releaseEvent, releaseButton);
+      });
     }
   };
 }

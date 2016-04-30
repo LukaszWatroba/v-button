@@ -1,6 +1,6 @@
 /**
  * vButton - AngularJS pressable button with a busy indicator
- * @version v1.1.1
+ * @version v1.2.0
  * @link http://lukaszwatroba.github.io/v-button
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -61,9 +61,8 @@
   -webkit-transition: all 0.25s;
           transition: all 0.25s; }
   [v-pressable].is-pressed {
-    -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-            transform: scale(0.95); }
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); }
 
 /***************************************
   vRipple
@@ -74,7 +73,6 @@ v-ripple {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 100%;
   -webkit-transform: scale(0.2);
-      -ms-transform: scale(0.2);
           transform: scale(0.2);
   opacity: 0;
   pointer-events: none;
@@ -85,7 +83,6 @@ v-ripple {
 @-webkit-keyframes v-ripple-enter {
   0% {
     opacity: 1; }
-
   100% {
     -webkit-transform: scale(2);
             transform: scale(2);
@@ -94,7 +91,6 @@ v-ripple {
 @keyframes v-ripple-enter {
   0% {
     opacity: 1; }
-
   100% {
     -webkit-transform: scale(2);
             transform: scale(2);
